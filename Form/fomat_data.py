@@ -40,7 +40,7 @@ def get_llm_response(prompt, client):
         return f"An error occurred: {e}"
 
 # File path to your CSV or Excel file
-file_path = 'Book1.xlsx'  # <-- Replace with your actual file path
+file_path = 'data\submissions.csv'  # <-- Replace with your actual file path
 
 # Read and format the data
 data = read_file(file_path)
