@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign Up</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <style>
+    body {
+      background-color: #f8f9fa;
+    }
+
+    .card {
+      border: none;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-control:focus {
+      box-shadow: none;
+      border-color: #007bff;
+    }
+
+    .btn-google {
+      background: linear-gradient(to right, #34a853, #4285f4);
+      color: #fff;
+      font-weight: bold;
+      border: none;
+    }
+
+    .position-relative {
+      position: relative;
+    }
+
+    .password-toggle {
+      position: absolute;
+      top: 50%;
+      right: 10px;
+      transform: translateY(-50%);
+      cursor: pointer;
+      color: #999;
+      z-index: 1;
+    }
+
+    .error {
+      color: red;
+      font-size: 0.9em;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="card mt-5 shadow-lg">
+          <div class="card-body">
+            <h4 class="card-title text-center mb-4">Sign Up</h4>
+            <div class="text-center mb-4">
+              <button class="btn btn-google"><i class="fab fa-google"></i> Sign Up with Google</button>
+            </div>
+            <p class="text-center mb-4">OR</p>
+            <form id="signup-form">
+              <div class="form-group">
+                <input type="text" class="form-control" placeholder="Your name e.g: John Doe" id="name" required>
+                <div class="error" id="name-error"></div>
+              </div>
+              <div class="form-group">
+                <input type="email" class="form-control" placeholder="Your Email e.g: someone@somewhere.com" id="email" required>
+                <div class="error" id="email-error"></div>
+              </div>
+              <div class="form-group position-relative">
+                <input type="password" class="form-control" placeholder="Type Password" id="password" required>
+                <span class="password-toggle" id="password-toggle"><i class="fas fa-eye-slash"></i></span>
+                <div class="error" id="password-error"></div>
+              </div>
+              <div class="form-group">
+                <input type="password" class="form-control" placeholder="Re-type Password" id="confirm-password" required>
+                <div class="error" id="confirm-password-error"></div>
+              </div>
+              <div class="form-group">
+                <button type="submit" class="btn btn-primary btn-block">SIGN UP</button>
+              </div>
+            </form>
+            <div class="text-center mt-4">
+              <p>Already have an account? <a href="index.html" id="login-link">Log In</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://kit.fontawesome.com/yourfontawesomekit.js"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      // Password show/hide toggle
+      $('#password-toggle').on('click', function() {
+        var passwordField = $('#password');
+        var icon = $(this).find('i');
+
+        if (passwordField.attr('type') === 'password') {
+          passwordField.attr('type', 'text');
+          icon.removeClass('fa-eye-slash').addClass('fa-eye');
+        } else {
+          passwordField.attr('type', 'password');
+          icon.removeClass('fa-eye').addClass('fa-eye-slash');
+        }
+      });
+
+      // Handle login link click
+      $('#login-link').on('click', function(e) {
+        e.preventDefault();
+        window.location.href = 'index.html'; // Replace with your login page URL
+      });
+
+      // Form validation
+      $('#signup-form').on('submit', function(e) {
+        e.preventDefault();
+
+        // Clear previous errors
+        $('.error').text('');
+
+        let isValid = true;
+
+        const name = $('#name').val().trim();
+        const email = $('#email').val().trim();
+        const password = $('#password').val().trim();
+        const confirmPassword = $('#confirm-password').val().trim();
+
+        if (name === '') {
+          $('#name-error').text('Name is required.');
+          isValid = false;
+        }
+
+        if (email === '') {
+          $('#email-error').text('Email is required.');
+          isValid = false;
+        }
+
+        if (password === '') {
+          $('#password-error').text('Password is required.');
+          isValid = false;
+        } else if (password.length < 8) {
+          $('#password-error').text('Password must be at least 8 characters long.');
+          isValid = false;
+        } else if (!/\d/.test(password)) {
+          $('#password-error').text('Password must contain at least one number.');
+          isValid = false;
+        } else if (!/[a-z]/.test(password)) {
+          $('#password-error').text('Password must contain at least one lowercase letter.');
+          isValid = false;
+        } else if (!/[A-Z]/.test(password)) {
+          $('#password-error').text('Password must contain at least one uppercase letter.');
+          isValid = false;
+        } else if (!/[!@#$%^&*(),.?":{}|<>]/.test(password)) {
+          $('#password-error').text('Password must contain at least one special character.');
+          isValid = false;
+        }
+
+        if (confirmPassword === '') {
+          $('#confirm-password-error').text('Please confirm your password.');
+          isValid = false;
+        } else if (password !== confirmPassword) {
+          $('#confirm-password-error').text('Passwords do not match.');
+          isValid = false;
+        }
+
+        if (isValid) {
+          alert('Form submitted successfully!');
+          // You can add your form submission code here
+        }
+      });
+    });
+  </script>
+</body>
+</html>
