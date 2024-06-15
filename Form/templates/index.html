@@ -1,72 +1,146 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Submit Your Data</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign In</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <style>
+    /* Your existing CSS styles */
+    .password-toggle {
+      position: absolute;
+      top: 50%;
+      right: 10px;
+      transform: translateY(-50%);
+      cursor: pointer;
+      color: #999;
+      z-index: 1;
+    }
+    #dashboard-link
+          {
+            color: white;
+          }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <div class="row mx-0 justify-content-center mt-5">
-            <div class="col-md-7 col-lg-5 px-lg-2 col-xl-4 px-xl-0 px-xxl-3">
-                <form method="POST" class="w-100 rounded-1 p-4 border bg-white" action="/submit">
-                    <label class="d-block mb-4">
-                        <span class="form-label d-block">Your name</span>
-                        <input name="name" type="text" class="form-control" placeholder="Joe Bloggs" required />
-                    </label>
-
-                    <label class="d-block mb-4">
-                        <span class="form-label d-block">Email address</span>
-                        <input name="email" type="email" class="form-control" placeholder="joe.bloggs@example.com" required />
-                    </label>
-
-                    <label class="d-block mb-4">
-                        <span class="form-label d-block">Enter Your CGPA</span>
-                        <input name="CGPA" type="text" class="form-control" placeholder="e.g., 8.5" required />
-                    </label>
-
-                    <label class="d-block mb-4">
-                        <span class="form-label d-block">Enter Your Courses Completed</span>
-                        <input name="Courses_Completed" type="text" class="form-control" placeholder="e.g., C programming" required />
-                    </label>
-
-                    <label class="d-block mb-4">
-                        <span class="form-label d-block">Enter Your Preferred Field</span>
-                        <input name="Preferred_Field" type="text" class="form-control" placeholder="e.g., machine learning" required />
-                    </label>
-
-                    <label class="d-block mb-4">
-                        <span class="form-label d-block">Choose your Learning Style</span>
-                        <input name="Learning_Style" type="text" class="form-control" placeholder="e.g., Visual" required />
-                    </label>
-
-                    <label class="d-block mb-4">
-                        <span class="form-label d-block">Enter Your DSA Marks</span>
-                        <input name="DSA_Marks" type="text" class="form-control" placeholder="e.g., 87" required />
-                    </label>
-
-                    <label class="d-block mb-4">
-                        <span class="form-label d-block">Enter Your DBMS Marks</span>
-                        <input name="DBMS_Marks" type="text" class="form-control" placeholder="e.g., 80" required />
-                    </label>
-
-                    <label class="d-block mb-4">
-                        <span class="form-label d-block">Enter Your ML Marks</span>
-                        <input name="ML_Marks" type="text" class="form-control" placeholder="e.g., 85" required />
-                    </label>
-
-                    <label class="d-block mb-4">
-                        <span class="form-label d-block">Enter Your Microcontroller Marks</span>
-                        <input name="Microcontroller_Marks" type="text" class="form-control" placeholder="e.g., 93" required />
-                    </label>
-
-                    <div class="mb-3">
-                        <button type="submit" class="btn btn-primary px-3 rounded-3">Send Answers</button>
-                    </div>
-                </form>
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="card mt-5 shadow-lg">
+          <div class="card-body">
+            <h4 class="card-title text-center mb-4">Sign In</h4>
+            <div class="text-center mb-4">
+              <div id="g_id_onload"
+                   data-client_id="YOUR_GOOGLE_CLIENT_ID"
+                   data-login_uri="YOUR_REDIRECT_URI"
+                   data-auto_prompt="false">
+              </div>
+              <div class="g_id_signin"
+                   data-type="standard"
+                   data-size="large"
+                   data-theme="outline"
+                   data-text="sign_in_with"
+                   data-shape="rectangular"
+                   data-logo_alignment="left">
+              </div>
             </div>
+            <p class="text-center mb-4">OR</p>
+            <form id="login-form">
+              <div class="form-group">
+                <input type="text" class="form-control" placeholder="Username" id="username" required>
+              </div>
+              <div class="form-group position-relative">
+                <input type="password" class="form-control" placeholder="Password" id="password" required>
+                <span class="password-toggle" id="password-toggle"><i class="fas fa-eye-slash"></i></span>
+              </div>
+              <div class="form-group form-check">
+                <input type="checkbox" class="form-check-input" id="remember-me">
+                <label class="form-check-label" for="remember-me">Remember Me</label>
+              </div>
+              <div class="form-group">
+                <button type="submit" class="btn btn-primary btn-block"><a id="dashboard-link">Sign In</a></button>
+              </div>
+            </form>
+            <div class="text-center mt-4">
+              <p>Forgot Password? <a href="#" id="forgot-password-link">Click Here</a></p>
+              <p>Not a member? <a href="signup.html" id="signup-link">Sign Up</a></p>
+            </div>
+          </div>
         </div>
+      </div>
     </div>
+  </div>
+
+  <script src="https://kit.fontawesome.com/yourfontawesomekit.js"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+  <script>
+    $(document).ready(function() {
+      // Password show/hide toggle
+      $('#password-toggle').on('click', function() {
+        var passwordField = $('#password');
+        var icon = $(this).find('i');
+
+        if (passwordField.attr('type') === 'password') {
+          passwordField.attr('type', 'text');
+          icon.removeClass('fa-eye-slash').addClass('fa-eye');
+        } else {
+          passwordField.attr('type', 'password');
+          icon.removeClass('fa-eye').addClass('fa-eye-slash');
+        }
+      });
+
+      // Handle forgot password link click
+      $('#forgot-password-link').on('click', function(e) {
+        e.preventDefault();
+        // Add your forgot password functionality here
+      });
+
+      // Handle sign up link click
+      $('#signup-link').on('click', function(e) {
+        e.preventDefault();
+        window.location.href = 'signup.html'; // Replace with your sign-up page URL
+      });
+
+      // Handle form submission
+      $('#login-form').on('submit', function(e) {
+        e.preventDefault();
+        // Add your form submission logic here
+      });
+    });
+
+    // Google Sign-In integration
+    function handleCredentialResponse(response) {
+      // Google Sign-in successful. You can now access the user's ID and basic profile information.
+      const userData = parseJwt(response.credential);
+      console.log('Google Sign-in successful:', userData);
+      // Perform additional actions with the user data, such as send it to your server for authentication.
+    }
+
+    function parseJwt(token) {
+      const base64Url = token.split('.')[1];
+      const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+      const jsonPayload = decodeURIComponent(atob(base64).split('').map(function(c) {
+        return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+      }).join(''));
+
+      return JSON.parse(jsonPayload);
+    }
+
+    window.onload = function() {
+      google.accounts.id.initialize({
+        client_id: 'YOUR_GOOGLE_CLIENT_ID',
+        callback: handleCredentialResponse
+      });
+      google.accounts.id.renderButton(
+        document.getElementById('g_id_onload'),
+        { theme: 'outline', size: 'large' }
+      );
+      google.accounts.id.prompt();
+    }
+  </script>
 </body>
 </html>
