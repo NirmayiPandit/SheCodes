@@ -83,6 +83,7 @@ SheCodes/
 ## Note
 
 ->If something is not working or getting connection error try changing the host address and relative path of the resources.
+
 ->If you are getting slow output that's totally hardware dependent. (you can use cuda cores for better performance)
 
 ## Screenshots
@@ -91,7 +92,7 @@ SheCodes/
 ![LLM Response](https://github.com/NirmayiPandit/SheCodes/assets/137396151/2d486da0-ff91-4af4-9106-1b516a815d7e)
 
 ## Contributing
-We welcome contributions from the cybersecurity community! If you'd like to contribute to the project, please follow our [contributing guidelines](CONTRIBUTING.md).
+We welcome contributions from the our community! If you'd like to contribute to the project, please follow our [contributing guidelines](CONTRIBUTING.md).
 
 ## License
 
